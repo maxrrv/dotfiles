@@ -1,0 +1,114 @@
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Variables for loading the plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_server_python_interpreter = '/usr/bin/python'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Load plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"plug.vim plugin-loading
+call plug#begin('~/.vim/plugged')
+
+"JavaScript Syntax Highlighting for React
+Plug 'https://github.com/pangloss/vim-javascript.git'
+
+"Change surroundings like brackets and tags
+Plug 'https://github.com/tpope/vim-surround.git'
+
+"Adds a file tree for easier file access
+Plug 'https://github.com/scrooloose/nerdtree.git'
+
+"adds useful (un)commenting functionality
+Plug 'https://github.com/scrooloose/nerdcommenter.git'
+
+"Automatically closes matching brackets
+Plug 'git://github.com/jiangmiao/auto-pairs.git'
+
+"Solarized Color Scheme
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
+
+"Add gitgutter (shows git changes next to the line numbers)
+Plug 'airblade/vim-gitgutter'
+
+"Airline adds a status-bar at the bottom of the window. 
+Plug 'https://github.com/vim-airline/vim-airline.git'
+
+"Airline themes for the airline statusbar
+Plug 'vim-airline/vim-airline-themes'
+
+"Add fancy autocompletion to vim
+Plug 'https://github.com/Valloric/YouCompleteMe.git'
+
+"Create your own personal wiki with vim
+Plug 'https://github.com/vimwiki/vimwiki.git'
+
+
+call plug#end()
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"General Configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Show line numbers
+set number relativenumber
+
+
+"Set vertical line at 120
+set colorcolumn=120
+
+
+"Tab configuration
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
+
+
+"Set refresh time to 250 ms
+set updatetime=250
+
+
+"Color scheme
+set background=dark "or light
+syntax enable 
+colorscheme solarized
+"let g:solarized_termcolors=256
+
+
+"highlight current line
+"set cursorline
+
+
+"highlight matching bracket
+set showmatch
+
+"settings for invisible characters
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+
+"enable filetype plugin
+filetype plugin on
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Nerdtree Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"open/close nerdtree with control+n
+map <C-n> :NERDTreeToggle<CR>
+
+"show hidden files in nerdtree
+let NERDTreeShowHidden=1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Airline Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Set the Airline Theme
+let g:airline_theme='term'
