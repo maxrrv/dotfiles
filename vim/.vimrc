@@ -31,7 +31,7 @@ Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 
 "Automatically closes matching brackets
-Plug 'git://github.com/jiangmiao/auto-pairs.git'
+"Plug 'git://github.com/jiangmiao/auto-pairs.git'
 
 "Solarized Color Scheme
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
@@ -207,4 +207,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = 'max:50,results:50'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"NerdCommenter Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDSpaceDelims=1

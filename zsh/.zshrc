@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="miloshadzic"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -106,5 +106,8 @@ alias kpp='cd ~/Workspace/KLARNA_DIRECT_DEBIT_PAYMENT/klarna-payments-dev-proxy'
 alias tgz='tar -zxvf' #z: gzip gunzip ungzip / x: extract from archive / v: verbose output / f: use archive file
 alias tbz='tar -jxvf' #j: bzip2 / x: extract from archive / v: verbose output / f: use archive file
 
-#alias for yarn && yarn start
+#alias for yarn
+alias y='yarn'
+alias yt='yarn test'
+alias yw='yarn test --watch'
 alias yys='yarn && yarn start'
