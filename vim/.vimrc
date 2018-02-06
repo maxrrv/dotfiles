@@ -4,7 +4,6 @@
 
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Load plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -56,7 +55,6 @@ Plug 'https://github.com/w0rp/ale.git'
 
 call plug#end()
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "General Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -64,10 +62,8 @@ call plug#end()
 "Show line numbers
 set number relativenumber
 
-
 "Set vertical line at 120
 set colorcolumn=120
-
 
 "remap colon to semicolon and vice versa in normal mode
 noremap ; :
@@ -78,57 +74,61 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-
 "Set refresh time to 800 ms
 set updatetime=800
-
 
 "set leader to ","
 let mapleader = ","
 let g:mapleader = ","
 noremap \ ,
 
-
 "Color scheme
-set background=dark "or light
+set background=light "or light
 syntax enable
 set t_Co=256 "enable 256 colors in terminal
-colorscheme solarized
-"let g:solarized_termcolors=256
-
+colo monokai
 
 "highlight matching bracket
 set showmatch
 
+" Highlight search results
+set hlsearch
+
+" Start searching as you begin to type
+set incsearch
 
 "settings for invisible characters
 nmap <leader>l :set list!<CR>
 set list
 set listchars=tab:▸\ ,trail:·,precedes:←,extends:→,eol:¬,nbsp:␣
 
-
 "enable filetype plugin
 filetype plugin on
-
 
 "do not redraw while executing macros (afaik)
 set lazyredraw
 
-
 "mapping-delays / keycode-delays in ms
 set timeoutlen=600 ttimeoutlen=0
 
-
 "ignore case when searching
 set ignorecase
-
 
 "do not create backup or swap files
 set nobackup
 set nowb
 set noswapfile
 
-"disable key antipattern-keys
+" F5 opens a menu with a list of open buffers
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+
+" Move around splits with <leader>hjkl
+nnoremap  <leader>j <c-w>j
+nnoremap  <leader>h <c-w>h
+nnoremap  <leader>k <c-w>k
+nnoremap  <leader>l <c-w>l
+
+"disable antipattern-keys
 nnoremap <Left> :echo "No left for you!"<CR>
 vnoremap <Left> :<C-u>echo "No left for you!"<CR>
 inoremap <Left> <Nop>
@@ -170,19 +170,24 @@ noremap <C-n> :NERDTreeToggle<CR>
 "show hidden files in nerdtree
 let NERDTreeShowHidden=1
 
+"default width of nerdtree pane
+:let g:NERDTreeWinSize=60
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Airline Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Set the Airline Theme
-let g:airline_theme='base16_google'
+let g:airline_theme='base16'
 
 "connect ale with airline
 let g:airline#extensions#ale#enabled = 1
 
 "Add bar with open buffers
 let g:airline#extensions#tabline#enabled = 1
+
+"Tabline format
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vim-jsx-pretty Settings
@@ -191,7 +196,6 @@ let g:airline#extensions#tabline#enabled = 1
 "Set colorful style
 let g:vim_jsx_pretty_colorful_config = 1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "A.L.E Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,10 +203,10 @@ let g:vim_jsx_pretty_colorful_config = 1
 "Always show A.L.E sidebar
 let g:ale_sign_column_always = 1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ctrlP Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = 'max:50,results:50'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
@@ -210,4 +214,6 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "NerdCommenter Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let NERDSpaceDelims=1
+
