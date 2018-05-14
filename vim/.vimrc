@@ -53,6 +53,9 @@ Plug 'https://github.com/vimwiki/vimwiki.git'
 "Add on the fly linting 
 Plug 'https://github.com/w0rp/ale.git'
 
+"Add clojure plugins
+Plug 'https://github.com/tpope/vim-fireplace.git'
+Plug 'https://github.com/tpope/vim-salve.git'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -73,9 +76,6 @@ noremap : ;
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
-"Set refresh time to 800 ms
-set updatetime=800
 
 "set leader to ","
 let mapleader = ","

@@ -84,23 +84,33 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # 
-#
+###############################################################################
+#Set caps to additional escape
+###############################################################################
+setxkbmap -option caps:escape
+
+###############################################################################
+#ANDROID_HOME
+###############################################################################
+export ANDROID_HOME=~/Android/Sdk
 
 ###############################################################################
 #Settings
 ###############################################################################
 KEYTIMEOUT=1
+
+###############################################################################
+#Custom functions
+###############################################################################
+function cs () { #triggers ls after each cd
+      cd "$@" && pwd && ls -lah
+          }
 ###############################################################################
 #List of all custom aliases
 ###############################################################################
 
-
-#Links to all important direct debit workspaces
-alias kp='cd ~/Workspace/KLARNA_DIRECT_DEBIT_PAYMENT'
-alias kpa='cd ~/Workspace/KLARNA_DIRECT_DEBIT_PAYMENT/klarna-payments-app'
-alias kpd='cd ~/Workspace/KLARNA_DIRECT_DEBIT_PAYMENT/direct-debit'
-alias kpl='cd ~/Workspace/KLARNA_DIRECT_DEBIT_PAYMENT/klarna-payments-lib'
-alias kpp='cd ~/Workspace/KLARNA_DIRECT_DEBIT_PAYMENT/klarna-payments-dev-proxy'
+#adb alias for android studio
+alias adb='~/Android/Sdk/platform-tools/adb'
 
 #Tar extractions
 alias tgz='tar -zxvf' #z: gzip gunzip ungzip / x: extract from archive / v: verbose output / f: use archive file
@@ -108,10 +118,11 @@ alias tbz='tar -jxvf' #j: bzip2 / x: extract from archive / v: verbose output / 
 
 #alias for yarn
 alias y='yarn'
+alias ys='yarn start'
 alias yt='yarn test'
 alias yw='yarn test --watch'
 alias yys='yarn && yarn start'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#alias to set caps to escape
+alias xx='setxkbmap -option caps:escape'
+
