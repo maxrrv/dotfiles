@@ -77,6 +77,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set updatetime=500
+
 "set leader to ","
 let mapleader = ","
 let g:mapleader = ","
@@ -113,6 +115,10 @@ set timeoutlen=600 ttimeoutlen=0
 
 "ignore case when searching
 set ignorecase
+
+"ignore case when lower case only. case sensitive when upper case appears in
+"search.
+set smartcase
 
 "do not create backup or swap files
 set nobackup
