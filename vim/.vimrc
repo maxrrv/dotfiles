@@ -1,3 +1,4 @@
+set nocompatible "needed for vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Variables for loading YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -20,6 +21,9 @@ Plug 'https://github.com/MaxMEllon/vim-jsx-pretty.git'
 "Change surroundings like brackets and tags
 Plug 'https://github.com/tpope/vim-surround.git'
 
+"Show indentation levels with lines or fine dots
+Plug 'Yggdroot/indentLine'
+
 "Adds a file tree for easier file access
 Plug 'https://github.com/scrooloose/nerdtree.git'
 
@@ -32,9 +36,6 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 "Automatically closes matching brackets
 "Plug 'git://github.com/jiangmiao/auto-pairs.git'
 
-"Solarized Color Scheme
-Plug 'https://github.com/altercation/vim-colors-solarized.git'
-
 "Add gitgutter (shows git changes next to the line numbers)
 Plug 'airblade/vim-gitgutter'
 
@@ -45,7 +46,7 @@ Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'vim-airline/vim-airline-themes'
 
 "Add fancy autocompletion to vim
-Plug 'https://github.com/Valloric/YouCompleteMe.git'
+" Plug 'https://github.com/Valloric/YouCompleteMe.git'
 
 "Create your own personal wiki with vim
 Plug 'https://github.com/vimwiki/vimwiki.git'
@@ -53,9 +54,15 @@ Plug 'https://github.com/vimwiki/vimwiki.git'
 "Add on the fly linting 
 Plug 'https://github.com/w0rp/ale.git'
 
+"Add fugitive
+Plug 'https://github.com/tpope/vim-fugitive.git'
+
 "Add clojure plugins
 Plug 'https://github.com/tpope/vim-fireplace.git'
 Plug 'https://github.com/tpope/vim-salve.git'
+
+"Add color
+Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -85,10 +92,10 @@ let g:mapleader = ","
 noremap \ ,
 
 "Color scheme
-set background=light "or light
 syntax enable
-set t_Co=256 "enable 256 colors in terminal
-colo monokai
+set background=light "or dark
+colorscheme PaperColor
+
 
 "highlight matching bracket
 set showmatch
@@ -104,7 +111,7 @@ nmap <leader>l :set list!<CR>
 set list
 set listchars=tab:▸\ ,trail:·,precedes:←,extends:→,eol:¬,nbsp:␣
 
-"enable filetype plugin
+"enable filetype plugin, also needed for vimwiki
 filetype plugin on
 
 "do not redraw while executing macros (afaik)
