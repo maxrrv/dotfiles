@@ -3,7 +3,7 @@ set nocompatible "needed for vimwiki
 "Variables for loading YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:ycm_server_python_interpreter = '/usr/bin/python'
+" let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Load plugins
@@ -69,7 +69,7 @@ call plug#end()
 "General Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"Show line numbers
+"Show line numbers. Show the current line number and all numbers relative to it.
 set number relativenumber
 
 "Set vertical line at 120
@@ -95,7 +95,6 @@ noremap \ ,
 syntax enable
 set background=light "or dark
 colorscheme PaperColor
-
 
 "highlight matching bracket
 set showmatch
@@ -123,8 +122,7 @@ set timeoutlen=600 ttimeoutlen=0
 "ignore case when searching
 set ignorecase
 
-"ignore case when lower case only. case sensitive when upper case appears in
-"search.
+"ignore case when lower case only. case sensitive when upper case appears in search.
 set smartcase
 
 "do not create backup or swap files
@@ -215,6 +213,10 @@ let g:vim_jsx_pretty_colorful_config = 1
 
 "Always show A.L.E sidebar
 let g:ale_sign_column_always = 1
+let g:ale_pattern_options = {
+      \   '.*\.spec\.js$': {'ale_enabled': 0},
+      \   '.*\.spec\.jsx$': {'ale_enabled': 0},
+      \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ctrlP Settings
@@ -230,3 +232,16 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 let NERDSpaceDelims=1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"VimWiki settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let wiki_1 = {}
+let wiki_1.path = '~/Workspace/klarna_repositories/own/klarna_vimwiki/'
+let wiki_1.path_html = '~/Workspace/klarna_repositories/own/klarna_vimwiki/vimwiki_html/'
+
+let wiki_2 = {}
+let wiki_2.path = '~/Workspace/private/private_vimwiki/'
+let wiki_2.path_html = '~/Workspace/private/private_vimwiki/vimwiki_html/'
+
+let g:vimwiki_list = [wiki_1, wiki_2]
