@@ -171,6 +171,22 @@ inoremap <PageUp> <Nop>
 nnoremap <PageDown> :echo "No PageDown for you!"<CR>
 vnoremap <PageDown> :<C-u>echo "No PageDown for you!"<CR>
 inoremap <PageDown> <Nop>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Language specific settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+augroup INDENTATION
+  autocmd!
+  autocmd FileType * set tabstop=2 | set shiftwidth=2
+  autocmd FileType json set tabstop=4 | set shiftwidth=4
+augroup END
+
+augroup PHP
+  autocmd!
+  autocmd FileType php set tabstop=2 | set noexpandtab | set shiftwidth=2
+augroup END
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Nerdtree Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -231,6 +247,19 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let NERDSpaceDelims=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" IndentLine Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" function! DisableIndentLine()
+  " let g:indentLine_enabled = 0
+" endfunction
+
+" let g:indentLine_char = '┆'
+" augroup INDENTLINE_IGNORE_FILETYPES
+  " autocmd!
+  " autocmd FileType json,yml :call DisableIndentLine()
+" augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "VimWiki settings
