@@ -18,11 +18,17 @@ Plug 'https://github.com/pangloss/vim-javascript.git'
 "Add React jsx highlighting
 Plug 'https://github.com/MaxMEllon/vim-jsx-pretty.git'
 
+" Easily navigate through import files
+Plug 'moll/vim-node'
+
+" Emmet
+Plug 'mattn/emmet-vim'
+
+" gf for js
+Plug 'kkoomen/gfi.vim'
+
 "Change surroundings like brackets and tags
 Plug 'https://github.com/tpope/vim-surround.git'
-
-"Show indentation levels with lines or fine dots
-Plug 'Yggdroot/indentLine'
 
 "Adds a file tree for easier file access
 Plug 'https://github.com/scrooloose/nerdtree.git'
@@ -31,7 +37,7 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 
 "Fuzzy file finder
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug '/usr/local/opt/fzf'
 
 "Automatically closes matching brackets
 "Plug 'git://github.com/jiangmiao/auto-pairs.git'
@@ -57,9 +63,12 @@ Plug 'https://github.com/w0rp/ale.git'
 "Add fugitive
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
+"Add ag as search engine inside files
+Plug 'https://github.com/mileszs/ack.vim.git'
+
 "Add clojure plugins
-Plug 'https://github.com/tpope/vim-fireplace.git'
-Plug 'https://github.com/tpope/vim-salve.git'
+" Plug 'https://github.com/tpope/vim-fireplace.git'
+" Plug 'https://github.com/tpope/vim-salve.git'
 
 "Add color
 Plug 'NLKNguyen/papercolor-theme'
@@ -108,7 +117,7 @@ set incsearch
 "settings for invisible characters
 nmap <leader>l :set list!<CR>
 set list
-set listchars=tab:▸\ ,trail:·,precedes:←,extends:→,eol:¬,nbsp:␣
+set listchars=tab:▸\ ,trail:·,precedes:←,extends:→,eol:¬,nbsp:␣,space:␣,
 
 "enable filetype plugin, also needed for vimwiki
 filetype plugin on
@@ -200,6 +209,10 @@ let NERDTreeShowHidden=1
 "default width of nerdtree pane
 :let g:NERDTreeWinSize=60
 
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" " make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Airline Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -235,18 +248,19 @@ let g:ale_pattern_options = {
       \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ctrlP Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_match_window = 'max:50,results:50'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "NerdCommenter Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let NERDSpaceDelims=1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Ack.vim settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " IndentLine Settings
