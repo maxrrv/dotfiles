@@ -1,88 +1,31 @@
 set nocompatible "needed for vimwiki
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Variables for loading YouCompleteMe
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Load plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "plug.vim plugin-loading
 call plug#begin('~/.vim/plugged')
-
-"JavaScript Syntax Highlighting for javascript
-Plug 'https://github.com/pangloss/vim-javascript.git'
-
-"Add React jsx highlighting
-Plug 'https://github.com/MaxMEllon/vim-jsx-pretty.git'
-
-" Easily navigate through import files
-Plug 'moll/vim-node'
-
-" Emmet
-Plug 'mattn/emmet-vim'
-
-" gf for js
-Plug 'kkoomen/gfi.vim'
-
-"Change surroundings like brackets and tags
-Plug 'https://github.com/tpope/vim-surround.git'
-
-"Adds a file tree for easier file access
-Plug 'https://github.com/scrooloose/nerdtree.git'
-
-"adds useful (un)commenting functionality
-Plug 'https://github.com/scrooloose/nerdcommenter.git'
-
-"Fuzzy file finder
-Plug '/usr/local/opt/fzf'
-
-"Automatically closes matching brackets
-"Plug 'git://github.com/jiangmiao/auto-pairs.git'
-
-"Add gitgutter (shows git changes next to the line numbers)
-Plug 'airblade/vim-gitgutter'
-
-"Airline adds a status-bar at the bottom of the window. 
-Plug 'https://github.com/vim-airline/vim-airline.git'
-
-"Airline themes for the airline statusbar
-Plug 'vim-airline/vim-airline-themes'
-
-"Add fancy autocompletion to vim
-" Plug 'https://github.com/Valloric/YouCompleteMe.git'
-
-"Create your own personal wiki with vim
-Plug 'https://github.com/vimwiki/vimwiki.git'
-
-"Add on the fly linting 
-Plug 'https://github.com/w0rp/ale.git'
-
-"Add fugitive
-Plug 'https://github.com/tpope/vim-fugitive.git'
-
-"Add ag as search engine inside files
-Plug 'https://github.com/mileszs/ack.vim.git'
-
-"Add clojure plugins
-" Plug 'https://github.com/tpope/vim-fireplace.git'
-" Plug 'https://github.com/tpope/vim-salve.git'
-
-"Add color
-Plug 'NLKNguyen/papercolor-theme'
+Plug '/usr/local/opt/fzf' "Fuzzy file finder
+Plug 'https://github.com/mileszs/ack.vim.git' "Add ag as search engine inside files
+Plug 'https://github.com/scrooloose/nerdtree.git' "Adds a file tree for easier file access
+Plug 'itchyny/lightline.vim' "Add lightweight airline alternative
+Plug 'airblade/vim-gitgutter' "Add gitgutter (shows git changes next to the line numbers)
+Plug 'https://github.com/tpope/vim-fugitive.git' "Add fugitive
+Plug 'https://github.com/w0rp/ale.git' "Add on the fly linting 
+Plug 'https://github.com/pangloss/vim-javascript.git' "JavaScript Syntax Highlighting for javascript
+Plug 'https://github.com/MaxMEllon/vim-jsx-pretty.git' "Add React jsx highlighting
+Plug 'NLKNguyen/papercolor-theme' "Add color
+Plug 'mattn/emmet-vim' "Emmet
+Plug 'https://github.com/tpope/vim-surround.git' "Change surroundings like brackets and tags
+Plug 'https://github.com/scrooloose/nerdcommenter.git' "adds useful (un)commenting functionality
+Plug 'https://github.com/vimwiki/vimwiki.git' "Create your own personal wiki with vim
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "General Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Show line numbers. Show the current line number and all numbers relative to it.
-set number relativenumber
-
-"Set vertical line at 120
-set colorcolumn=120
+set number relativenumber "Show line numbers. Show the current line number and all numbers relative to it.
+set colorcolumn=120 "Set vertical line at 120
 
 "remap colon to semicolon and vice versa in normal mode
 noremap ; :
@@ -102,51 +45,31 @@ noremap \ ,
 
 "Color scheme
 syntax enable
-set background=light "or dark
+set background=light
 colorscheme PaperColor
 
-"highlight matching bracket
-set showmatch
-
-" Highlight search results
-set hlsearch
-
-" Start searching as you begin to type
-set incsearch
+set showmatch "highlight matching bracket
+set hlsearch " Highlight search results
+set incsearch " Start searching as you begin to type
 
 "settings for invisible characters
 nmap <leader>l :set list!<CR>
 set list
 set listchars=tab:▸\ ,trail:·,precedes:←,extends:→,eol:¬,nbsp:␣,space:␣,
 
-"enable filetype plugin, also needed for vimwiki
-filetype plugin on
-
-"do not redraw while executing macros (afaik)
-set lazyredraw
-
-"mapping-delays / keycode-delays in ms
-set timeoutlen=600 ttimeoutlen=0
-
-"ignore case when searching
-set ignorecase
-
-"ignore case when lower case only. case sensitive when upper case appears in search.
-set smartcase
+filetype plugin on "enable filetype plugin, also needed for vimwiki
+set lazyredraw "do not redraw while executing macros (afaik)
+set timeoutlen=600 ttimeoutlen=0 "mapping-delays / keycode-delays in ms
+set ignorecase "ignore case when searching
+set smartcase "ignore case when lower case only. case sensitive when upper case appears in search.
 
 "do not create backup or swap files
-set nobackup
+set backupcopy=yes
 set nowb
 set noswapfile
 
 " F5 opens a menu with a list of open buffers
 :nnoremap <F5> :buffers<CR>:buffer<Space>
-
-" Move around splits with <leader>hjkl
-nnoremap  <leader>j <c-w>j
-nnoremap  <leader>h <c-w>h
-nnoremap  <leader>k <c-w>k
-nnoremap  <leader>l <c-w>l
 
 "disable antipattern-keys
 nnoremap <Left> :echo "No left for you!"<CR>
@@ -182,9 +105,8 @@ vnoremap <PageDown> :<C-u>echo "No PageDown for you!"<CR>
 inoremap <PageDown> <Nop>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Language specific settings
+"Language specific
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 augroup INDENTATION
   autocmd!
   autocmd FileType * set tabstop=2 | set shiftwidth=2
@@ -197,88 +119,114 @@ augroup PHP
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Nerdtree Settings
+"Nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "open/close nerdtree with control+n
 noremap <C-n> :NERDTreeToggle<CR>
 
-"show hidden files in nerdtree
-let NERDTreeShowHidden=1
-
-"default width of nerdtree pane
-:let g:NERDTreeWinSize=60
-
-" enable line numbers
-let NERDTreeShowLineNumbers=1
-" " make sure relative line numbers are used
-autocmd FileType nerdtree setlocal relativenumber
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Airline Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Set the Airline Theme
-let g:airline_theme='base16'
-
-"connect ale with airline
-let g:airline#extensions#ale#enabled = 1
-
-"Add bar with open buffers
-let g:airline#extensions#tabline#enabled = 1
-
-"Tabline format
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+let NERDTreeShowHidden=1 "show hidden files in nerdtree
+:let g:NERDTreeWinSize=60 "default width of nerdtree pane
+let NERDTreeShowLineNumbers=1 "enable line numbers
+autocmd FileType nerdtree setlocal relativenumber "make sure relative line numbers are used
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vim-jsx-pretty Settings
+"Lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lightline = {
+      \ 'colorscheme': 'Tomorrow',
+      \ 'active': {
+      \   'left': [['mode', 'paste'], ['filename', 'modified']],
+      \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+      \ },
+      \ 'component_expand': {
+      \   'linter_warnings': 'LightlineLinterWarnings',
+      \   'linter_errors': 'LightlineLinterErrors',
+      \   'linter_ok': 'LightlineLinterOK'
+      \ },
+      \ 'component_type': {
+      \   'readonly': 'error',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error'
+      \ },
+      \ }
+set laststatus=2
+set noshowmode "remove duplicate insert statement
 
-"Set colorful style
-let g:vim_jsx_pretty_colorful_config = 1
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+endfunction
+
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓ ' : ''
+endfunction
+
+autocmd User ALELintPost call s:MaybeUpdateLightline()
+
+" Update and show lightline but only if it's visible (e.g., not in Goyo)
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"A.L.E Settings
+"GitGutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_modified_removed = '•'
+highlight GitGutterAdd    ctermfg=119
+highlight GitGutterChange ctermfg=12
+highlight GitGutterDelete ctermfg=9
 
-"Always show A.L.E sidebar
-let g:ale_sign_column_always = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"vim-jsx-pretty
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_jsx_pretty_colorful_config = 1 "Set colorful style
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"ale
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_sign_column_always = 1 "Always show ale sidebar (prevent flickering)
 let g:ale_pattern_options = {
       \   '.*\.spec\.js$': {'ale_enabled': 0},
       \   '.*\.spec\.jsx$': {'ale_enabled': 0},
       \}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"NerdCommenter Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"NerdCommenter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDSpaceDelims=1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Ack.vim settings
+"Ack
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" IndentLine Settings
+"VimWiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" function! DisableIndentLine()
-  " let g:indentLine_enabled = 0
-" endfunction
-
-" let g:indentLine_char = '┆'
-" augroup INDENTLINE_IGNORE_FILETYPES
-  " autocmd!
-  " autocmd FileType json,yml :call DisableIndentLine()
-" augroup END
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"VimWiki settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let wiki_1 = {}
 let wiki_1.path = '~/Workspace/klarna_repositories/own/klarna_vimwiki/'
 let wiki_1.path_html = '~/Workspace/klarna_repositories/own/klarna_vimwiki/vimwiki_html/'
