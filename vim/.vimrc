@@ -123,7 +123,11 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "open/close nerdtree with control+n
 noremap <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeQuitOnOpen = 1 "Quit nerdtree on open file
 let NERDTreeShowHidden=1 "show hidden files in nerdtree
 :let g:NERDTreeWinSize=60 "default width of nerdtree pane
 let NERDTreeShowLineNumbers=1 "enable line numbers
@@ -211,6 +215,9 @@ let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
+highlight ALEWarning ctermbg=124
+highlight ALEError ctermbg=124
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "NerdCommenter
