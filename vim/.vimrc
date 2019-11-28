@@ -64,12 +64,16 @@ set ignorecase "ignore case when searching
 set smartcase "ignore case when lower case only. case sensitive when upper case appears in search.
 
 "do not create backup or swap files
-set backupcopy=yes
+set nobackup
 set nowb
 set noswapfile
 
 " F5 opens a menu with a list of open buffers
 :nnoremap <F5> :buffers<CR>:buffer<Space>
+
+" Move between open buffers.
+map <C-n> :bnext<CR>
+map <C-p> :bprev<CR>
 
 "disable antipattern-keys
 nnoremap <Left> :echo "No left for you!"<CR>
@@ -122,7 +126,7 @@ augroup END
 "Nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "open/close nerdtree with control+n
-noremap <C-n> :NERDTreeToggle<CR>
+noremap <silent> <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
 let NERDTreeMinimalUI = 1
