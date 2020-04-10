@@ -14,7 +14,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git' "Add fugitive
 Plug 'https://github.com/w0rp/ale.git' "Add on the fly linting 
 Plug 'https://github.com/pangloss/vim-javascript.git' "JavaScript Syntax Highlighting for javascript
 Plug 'https://github.com/MaxMEllon/vim-jsx-pretty.git' "Add React jsx highlighting
-Plug 'NLKNguyen/papercolor-theme' "Add color
+"Plug 'NLKNguyen/papercolor-theme' "Add color
 Plug 'mattn/emmet-vim' "Emmet
 Plug 'https://github.com/tpope/vim-surround.git' "Change surroundings like brackets and tags
 Plug 'https://github.com/scrooloose/nerdcommenter.git' "adds useful (un)commenting functionality
@@ -46,7 +46,7 @@ noremap \ ,
 "Color scheme
 syntax enable
 set background=light
-colorscheme PaperColor
+" colorscheme PaperColor
 
 set showmatch "highlight matching bracket
 set hlsearch " Highlight search results
