@@ -23,18 +23,19 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 "Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
-Plug 'tpope/vim-fugitive'
-Plug 'leafgarland/typescript-vim'
-Plug 'vim-utils/vim-man' 
-Plug 'mbbill/undotree'
-Plug 'vimwiki/vimwiki'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'mbbill/undotree'
+Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pechorin/any-jump.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'vim-utils/vim-man' 
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -70,8 +71,10 @@ let wiki_3.path = '~/Workspace/private/decision_diary/'
 let wiki_3.path_html = '~/Workspace/private/decision_diary/vimwiki_html/'
 
 let g:vimwiki_list = [wiki_1, wiki_2, wiki_3]
+let g:any_jump_disable_default_keybindings = 1
 
 "mappings
+nnoremap <leader>a :AnyJump<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
