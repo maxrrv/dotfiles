@@ -8,6 +8,7 @@ set nowrap
 set number
 set relativenumber
 set shiftwidth=2
+set ignorecase
 set smartcase
 set smartindent
 set tabstop=2 softtabstop=2
