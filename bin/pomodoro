@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+(
+  if [ $# -eq 0 ]
+  then
+    echo "Please set the timer in seconds."
+    exit
+  fi
+  TIMER=$((`gdate +%s` + $1))
+  while [ "$TIMER" -ge `date +%s` ]; do
+    echo -ne "$(gdate -u --date @$(($TIMER - `gdate +%s`)) +%H:%M:%S)\r"
+    sleep 0.1
+  done
+  for x in $(seq 100); do afplay /System/Library/Sounds/Hero.aiff; sleep 0.1; done
+)
