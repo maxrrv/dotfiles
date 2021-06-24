@@ -1,5 +1,5 @@
 "Default settings
-syntax on 
+syntax enable 
 set expandtab
 set nobackup
 set noerrorbells
@@ -24,26 +24,32 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 "Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'morhetz/gruvbox'
+Plug 'honza/vim-snippets'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jremmen/vim-ripgrep'
-Plug 'tpope/vim-fugitive'
-Plug 'leafgarland/typescript-vim'
-Plug 'vim-utils/vim-man' 
-Plug 'mbbill/undotree'
-Plug 'vimwiki/vimwiki'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim' "Emmet
+Plug 'mbbill/undotree'
+Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pechorin/any-jump.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'honza/vim-snippets'
+Plug 'vim-utils/vim-man' 
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
 "Configs
+let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark
+highlight Comment cterm=italic
+highlight Keyword gui=italic cterm=italic
+"figure out how to italic js keywords
 
 if executable('rg')
   let g:rg_derive_root='true'
@@ -89,6 +95,8 @@ nnoremap <leader>pv :wincmd v <bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <leader>= :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
+nnoremap <silent> <leader>+ :resize +5<CR>
+nnoremap <silent> <leader>_ :resize -5<CR>
 
 nnoremap <silent> <c-p> :GFiles<CR>
 
@@ -123,3 +131,12 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ?  coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+augroup Jenkinsfile
+  autocmd!
+  au BufNewFile,BufRead Jenkinsfile setf groovy
+augroup END
+
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
+set nofixendofline

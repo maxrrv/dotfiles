@@ -19,6 +19,8 @@ alias yt='yarn test'
 alias yw='yarn test --watch'
 alias yys='yarn && yarn start'
 alias yb='yarn build'
+alias yl='yarn link'
+alias yc='yarn commit'
 
 #alias for pomodoro
 alias p='pomodoro 25*60'
