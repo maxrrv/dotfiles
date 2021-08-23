@@ -29,7 +29,7 @@ set colorcolumn=120
 set signcolumn=yes
 
 set cmdheight=2
-set updatetime=50 
+set updatetime=50
 
 set nofixendofline
 
@@ -39,7 +39,7 @@ call plug#begin('~/.vim/plugged')
 "telescope and telescope dependencies
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'https://github.com/nvim-telescope/telescope.nvim' 
+Plug 'https://github.com/nvim-telescope/telescope.nvim'
 
 "lsp-support
 Plug 'neovim/nvim-lspconfig'
@@ -51,11 +51,17 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "colorscheme
 Plug 'gruvbox-community/gruvbox'
 
-Plug 'mbbill/undotree' 
-
-Plug 'tpope/vim-fugitive' 
+"tpope <3
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-projectionist'
+
+"everything else
+Plug 'mbbill/undotree'
+Plug 'mattn/emmet-vim'
 Plug 'vimwiki/vimwiki'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
 colorscheme gruvbox
 highlight Normal guibg=none
@@ -74,7 +80,7 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
-  enable = true
+    enable = true
   }
 }
 
@@ -92,8 +98,12 @@ EOF
 set completeopt=menuone,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
-fun! LspLocationList()
-    " lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
+
+" Removes trailing spaces
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
 endfun
 
 nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
@@ -105,22 +115,28 @@ nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <leader>vll :call LspLocationList()<CR>
 
 augroup MRRV_LSP
     autocmd!
-    autocmd! BufWrite,BufEnter,InsertLeave * :call LspLocationList()
+    autocmd! BufWritePre * call TrimWhitespace()
+augroup END
+
+augroup MRRV_PROGRAMMING
+  autocmd!
+  autocmd FileType javascript inoremap <buffer> <C-L> ()<space>=><space>{}
+  autocmd FileType javascript iabbrev <buffer> ret return
+  autocmd FileType javascript iabbrev <buffer> clg console.log({})
 augroup END
 
 let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.autocomplete = v:true
 let g:compe.debug = v:false
-let g:compe.min_length = 1
+let g:compe.min_length = 2
 let g:compe.preselect = 'enable'
 let g:compe.throttle_time = 80
 let g:compe.source_timeout = 200
-let g:compe.incomplete_delay = 400
+let g:compe.incomplete_delay = 200
 let g:compe.max_abbr_width = 100
 let g:compe.max_kind_width = 100
 let g:compe.max_menu_width = 100
@@ -129,21 +145,29 @@ let g:compe.documentation = v:true
 let g:compe.source = {}
 let g:compe.source.path = v:true
 let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
 let g:compe.source.nvim_lsp = v:true
 let g:compe.source.nvim_lua = v:true
-let g:compe.source.vsnip = v:true
+let g:compe.source.ultisnips = v:true
 
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
 
-nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>pv :Ex<CR>
+nnoremap <Leader>a :A<CR>
+nnoremap <Leader>c :set cursorline! <CR>
+nnoremap <Leader>rp :resize 100<CR>
+nnoremap <Leader>vp :vertical resize 120<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-nnoremap <Leader>rp :resize 100<CR>
-nnoremap <Leader>vp :vertical resize 120<CR>
-nnoremap <Leader>c :set cursorline! <CR>
+nnoremap <leader>pv :Ex<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nnoremap <leader>gs :G<CR>
+nnoremap <leader>gf :diffget //2<CR>
+nnoremap <leader>gj :diffget //3<CR>
+
+nnoremap <leader>tt :tabe<CR>
+nnoremap <leader>tn :tabn<CR>
+nnoremap <leader>tp :tabp<CR>
+
+hi CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=white guibg=darkgrey guifg=white
