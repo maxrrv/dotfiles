@@ -1,0 +1,41 @@
+env:
+  TERM: xterm-256color
+font:
+  normal:
+    family: "Monoid"
+    style: Retina
+  size: 13
+  offset:
+    x: 0
+    y: 8
+  glyph_offset:
+    x: 0
+    y: 4
+window: #basically every option here requires restart
+  dimensions:
+    columns: 240
+    lines: 40
+  padding:
+    x: 8
+    y: 8
+  decorations: none
+colors:
+  # Default colors
+  # https://github.com/morhetz/gruvbox
+  primary:
+    background: '#282828'
+    foreground: '#ebdbb2'
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0xffffff'
+    cursor: '0x4d4d4c'
+  # Normal colors
+  normal:
+    black:   '#1d2021'
+    red:     '#cc241d'
+    green:   '#98971a'
+    yellow:  '#d79921'
+    blue:    '#458588'
+    magenta: '#b16286'
+    cyan:    '#689d6a'
+    white:   '#fbf1c7'
