@@ -1,47 +1,43 @@
-echo "sourcing generic .zshrc"
+# export ZSH=/Users/maximilian.ungar/.oh-my-zsh # Path to your oh-my-zsh installation.
+# ZSH_THEME="minimal" #others: bira2, robbyrussel, agnoster, minimal
+# plugins=(osx "$plugins[@]") #add mac related plugins
+# plugins=(git zsh-syntax-highlighting jump "$plugins[@]") #standard plugins
+# source $ZSH/oh-my-zsh.sh #must run after 'plugins' definition
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+# zinit plugins
+
+# pure theme
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
+
+export NVM_LAZY_LOAD=true
+zinit ice wait
+zinit load lukechilds/zsh-nvm
+
+zinit ice wait
+zinit light zdharma/fast-syntax-highlighting
+zinit light mdumitru/git-aliases
+
+#important configuration
 KEYTIMEOUT=1 #prevent long lags with zsh + vim
-plugins=(git zsh-syntax-highlighting jump "$plugins[@]") #standard plugins 
+setopt auto_cd
 
-#Custom functions
-function cs () { #triggers ls after each cd
-  cd "$@" && pwd && ls -lah
-}
-
-#List of all custom aliases
-#Tar extractions
-alias tgz='tar -zxvf' #z: gzip gunzip ungzip / x: extract from archive / v: verbose output / f: use archive file
-alias tbz='tar -jxvf' #j: bzip2 / x: extract from archive / v: verbose output / f: use archive file
-
-#alias for yarn
-alias y='yarn'
-alias ys='yarn start'
-alias yt='yarn test'
-alias yw='yarn test --watch'
-alias yys='yarn && yarn start'
-alias yb='yarn build'
-alias yl='yarn link'
-alias yc='yarn commit'
-
-#alias for pomodoro
-alias p='pomodoro 25*60'
-
-alias gay='echo "I am happily staging your updated files now :)" && gau'
-alias sortBySize='find . -type f ! -path "./node_modules/*" ! -path "./.git/*" ! -path "*/.gems/*" ! -path "./dist/*" ! -path "./coverage/*" -exec wc -l {} + | sort -rn | less' 
-alias excuse='curl -s http://pages.cs.wisc.edu/~ballard/bofh/excuses | shuf -n 1'
-
-#check disk size 
-alias biggie='du -sh *'
-
-#alias for rm
-alias rnm='rm -rf node_modules/'
-alias wipenm='find . -name \*node_modules -type d -exec rm -rf {} +'
-
-#alias for jump
-alias j='jump' 
-alias m='mark'
-alias um='unmark'
-alias ms='marks'
-
-if [ -f ~/.docker_aliases ]; then
-  . ~/.docker_aliases
-fi
+#alias, exports and custom functions
+SHELLSTARTUP=~/.shellstartup
+source $SHELLSTARTUP/fns.sh
+source $SHELLSTARTUP/generalias.sh
+source $SHELLSTARTUP/workalias.sh
+source $SHELLSTARTUP/jump.sh
+source $SHELLSTARTUP/spotify.sh
+source $SHELLSTARTUP/crds.sh
+source $SHELLSTARTUP/exports.sh
