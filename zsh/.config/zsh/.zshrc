@@ -37,12 +37,8 @@ zsh_add_file "generalias.sh"
 zsh_add_file "jump.sh"
 zsh_add_file "spotify.sh"
 zsh_add_file "evals.sh"
+zsh_add_file "prompt.sh"
 
 # add plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_plugin "sindresorhus/pure"
-
-fpath+=$ZSHCONFIGDIR/plugins/pure
-autoload -U promptinit; promptinit
-prompt pure
