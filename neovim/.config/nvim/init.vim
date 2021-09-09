@@ -171,3 +171,32 @@ nnoremap <leader>tn :tabn<CR>
 nnoremap <leader>tp :tabp<CR>
 
 hi CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=white guibg=darkgrey guifg=white
+
+" firenvim configuration
+if exists('g:started_by_firenvim')
+  set laststatus=0
+  set guifont=monospace:h16
+else
+  set laststatus=2
+endif
+
+let g:firenvim_config = {
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'content': 'text',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
+" vimwiki configuration
+let g:vimwiki_list = [
+      \ {'path': '~/workspace/klarna/own/klarna_vimwiki', 'syntax': 'markdown', 'ext': '.md'},
+      \ {'path': '~/workspace/own_repositories/private_vimwiki', 'syntax': 'markdown', 'ext': '.md'}
+      \ ]
