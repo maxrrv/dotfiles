@@ -2,7 +2,7 @@
 alias tgz='tar -zxvf' #z: gzip gunzip ungzip / x: extract from archive / v: verbose output / f: use archive file
 alias tbz='tar -jxvf' #j: bzip2 / x: extract from archive / v: verbose output / f: use archive file
 
-#alias for yarn
+#yarn
 alias y='yarn'
 alias ys='yarn start'
 alias yt='yarn test'
@@ -14,8 +14,8 @@ alias yc='yarn commit'
 alias yj='yarn jest'
 alias yjd='node --inspect-brk node_modules/.bin/jest --runInBand'
 
-#alias for pomodoro
-alias p='pomodoro 25*60'
+#pomodoro
+alias p='pomodoro 1500'
 
 alias gay='echo "I am happily staging your updated files now :)" && gau'
 alias sortBySize='find . -type f ! -path "./node_modules/*" ! -path "./.git/*" ! -path "*/.gems/*" ! -path "./dist/*" ! -path "./coverage/*" -exec wc -l {} + | sort -rn | less'
@@ -24,18 +24,22 @@ alias excuse='curl -s http://pages.cs.wisc.edu/~ballard/bofh/excuses | shuf -n 1
 #check disk size
 alias biggie='du -sh *'
 
-#alias for rm
+#rm
 alias rnm='rm -rf node_modules/'
 alias wipenm='find . -name \*node_modules -type d -exec rm -rf {} +'
 
-#alias for jump
+#jump
 alias j='jump'
 alias m='mark'
 alias um='unmark'
 alias ms='marks'
 
-alias l='ls -lah'
+#ls
+alias ls='ls -G'
+alias l='ls -lahG'
+alias ll='ls -lhG'
 
+#git
 alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
@@ -43,6 +47,14 @@ alias gc='git commit'
 alias gpsup='git push --set-upstream origin '
 alias glg='git log -p'
 alias gd='git diff | bat'
+alias ga='git add'
 alias gau='git add -u'
 alias gaa='git add .'
 alias gds='git diff --staged | bat'
+alias gfa='git fetch --all -p'
+alias gmom='git merge origin/master'
+
+#cd
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'

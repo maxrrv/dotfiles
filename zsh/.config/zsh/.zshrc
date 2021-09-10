@@ -26,6 +26,10 @@ autoload -Uz colors && colors
 
 #bindkeys
 bindkey -v
+bindkey "^k" up-line-or-beginning-search # Up
+bindkey "^j" down-line-or-beginning-search # Up
+bindkey -s '^o' 'vifm^M'
+bindkey -s '^e' 'vim .^M'
 
 # vars
 KEYTIMEOUT=1
