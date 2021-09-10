@@ -47,6 +47,7 @@ Plug 'hrsh7th/nvim-compe'
 
 "treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 "colorscheme
 Plug 'gruvbox-community/gruvbox'
