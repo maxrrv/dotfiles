@@ -58,3 +58,6 @@ alias gmom='git merge origin/master'
 alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
+
+#vim
+alias vim='nvim'
