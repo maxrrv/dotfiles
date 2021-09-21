@@ -42,6 +42,7 @@ zsh_add_file "jump.sh"
 zsh_add_file "spotify.sh"
 zsh_add_file "evals.sh"
 zsh_add_file "prompt.sh"
+zsh_add_file "exports.sh"
 
 # add plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
