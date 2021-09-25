@@ -31,6 +31,8 @@ bindkey "^j" down-line-or-beginning-search # Up
 bindkey -s '^o' 'vifm^M'
 bindkey -s '^e' 'vim .^M'
 
+compinit
+
 # vars
 KEYTIMEOUT=1
 
