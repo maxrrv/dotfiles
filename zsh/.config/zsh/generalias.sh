@@ -40,10 +40,12 @@ alias l='ls -lahG'
 alias ll='ls -lhG'
 
 #git
+alias g='git'
 alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
-alias gc='git commit'
+alias gc='git commit -v'
+alias gcb='git checkout -b'
 alias gpsup='git push --set-upstream origin '
 alias glg='git log -p'
 alias gd='git diff | bat'

@@ -1,0 +1,14 @@
+{
+  "src/*.js": {
+    "alternate": "src/{}.spec.js"
+  },
+  "src/*.spec.js": {
+    "alternate": "src/{}.js"
+  },
+  "src/*.jsx": {
+    "alternate": "src/{}.spec.jsx"
+  },
+  "src/*.spec.jsx": {
+    "alternate": "src/{}.jsx"
+  }
+}
