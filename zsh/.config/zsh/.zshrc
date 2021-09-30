@@ -28,6 +28,7 @@ autoload -Uz colors && colors
 bindkey -v
 bindkey "^k" up-line-or-beginning-search # Up
 bindkey "^j" down-line-or-beginning-search # Up
+bindkey "^r" history-incremental-search-backward
 bindkey -s '^o' 'vifm^M'
 bindkey -s '^e' 'vim .^M'
 

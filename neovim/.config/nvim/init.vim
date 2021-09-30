@@ -149,6 +149,7 @@ let g:compe.source.nvim_lua = v:true
 let g:compe.source.ultisnips = v:true
 
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
+inoremap jj <ESC>:w<CR>
 
 nnoremap <Leader>a :A<CR>
 nnoremap <Leader>c :set cursorline! <CR>
