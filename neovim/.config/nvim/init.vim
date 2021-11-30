@@ -67,15 +67,6 @@ call plug#end()
 colorscheme gruvbox
 highlight Normal guibg=none
 
-
-
-let mapleader=" "
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep for > ")})<CR>
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -90,9 +81,15 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require'lspconfig'.tsserver.setup {}
-
+require'telescope'.setup{ defaults = { file_ignore_patterns = {"node_modules"} } }
 EOF
 
+let mapleader=" "
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep for > ")})<CR>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 set completeopt=menuone,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
