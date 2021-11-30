@@ -5,7 +5,9 @@ alias tbz='tar -jxvf' #j: bzip2 / x: extract from archive / v: verbose output / 
 #yarn
 alias y='yarn'
 alias ys='yarn start'
+alias yst='yarn storybook'
 alias yt='yarn test'
+alias ytr='yarn translations:sync'
 alias yw='yarn test --watch'
 alias yys='yarn; yarn start'
 alias yb='yarn build'

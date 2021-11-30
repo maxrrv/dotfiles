@@ -105,6 +105,10 @@ fun! TrimWhitespace()
   call winrestview(l:save)
 endfun
 
+fun! AppendCheckmark()
+  execute 'normal! A ✓'
+endfun
+
 nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
@@ -153,6 +157,7 @@ inoremap jj <ESC>:w<CR>
 
 nnoremap <Leader>a :A<CR>
 nnoremap <Leader>c :set cursorline! <CR>
+nnoremap <leader>d :call AppendCheckmark()<CR>
 nnoremap <Leader>rp :resize 100<CR>
 nnoremap <Leader>vp :vertical resize 120<CR>
 nnoremap <leader>h :wincmd h<CR>
