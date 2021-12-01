@@ -15,7 +15,7 @@ echo "root:<rootpwd>" | chpasswd
 
 pacman -S nvidia nvidia-settings nvidia-utils
 # add more packages to be installed here
-pacman -S networkmanager grub efibootmgr bash-completion #os-prober for multiboot
+pacman -S networkmanager grub efibootmgr bash-completion os-prober
 
 systemctl enable NetworkManager
 grub-install --target=x86_64-efi --efi-directory=/boot/efi #if created during partitioning. else, path to efi directory
